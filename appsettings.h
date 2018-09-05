@@ -10,11 +10,13 @@ class AppSettings : public QObject
 public:
     explicit AppSettings(QObject *parent = 0) {}
 
+    static QString appName;
+
 
     //===============================================
     static QSettings *appSettings()
     {
-        static QSettings settings(QSettings::IniFormat, QSettings::UserScope, "untitled");
+        static QSettings settings(QSettings::IniFormat, QSettings::UserScope, settingsId);
         return &settings;
     }
 
@@ -41,6 +43,11 @@ public:
         return settings->value(key, defaultValue);
     }
 
+
+    static void setSettingsId(const QString &value);
+
+private:
+    static QString settingsId;
 
 };
 
