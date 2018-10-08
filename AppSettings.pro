@@ -23,11 +23,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-        appsettings.cpp
+        appsettings.cpp \
+    logger.cpp
 
 HEADERS += \
         appsettings.h \
-        appsettings_global.h 
+        appsettings_global.h \ 
+    logger.h
 
 unix {
     target.path = /usr/lib

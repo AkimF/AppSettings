@@ -5,47 +5,20 @@
 #include <QObject>
 #include <QSettings>
 
-class APPSETTINGSSHARED_EXPORT AppSettings
+class APPSETTINGSSHARED_EXPORT AppSettings : public QObject
 {
     Q_OBJECT
 
 public:
     AppSettings() {}
     static QString appName;
-
-
-        //===============================================
-        static QSettings *appSettings()
-        {
-            static QSettings settings(QSettings::IniFormat, QSettings::UserScope, settingsId);
-            return &settings;
-        }
-
-
-        //===============================================
-        static QVariant settingsValue (QSettings  &settings,
-                                       QString    key,
-                                       QVariant   defaultValue)
-        {
-            if (!settings.contains(key)) {
-                settings.setValue(key, defaultValue);
-            }
-            return settings.value(key, defaultValue);
-        }
-
-
-        //===============================================
-        static QVariant settingsValue(QString key, QVariant defaultValue)
-        {
-            QSettings *settings = appSettings();
-            if (!settings->contains(key)) {
-                settings->setValue(key, defaultValue);
-            }
-            return settings->value(key, defaultValue);
-        }
-
-
-        static void setSettingsId(const QString &value);
+    static QSettings *appSettings   ();
+    static QVariant settingsValue   (QSettings  &settings,
+                                     QString    key,
+                                     QVariant   defaultValue);
+    static QVariant settingsValue   (QString key,
+                                     QVariant defaultValue);
+    static void     setSettingsId   (const QString &value);
 
     private:
         static QString settingsId;
