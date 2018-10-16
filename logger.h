@@ -1,10 +1,11 @@
 #ifndef LOGGER_H
 #define LOGGER_H
 
+#include "appsettings_global.h"
 #include <QObject>
 #include <QFile>
 
-class Logger : public QObject
+class APPSETTINGSSHARED_EXPORT Logger : public QObject
 {
     Q_OBJECT
 public:
