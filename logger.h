@@ -11,9 +11,11 @@ public:
     explicit Logger(QObject *parent = nullptr);
     ~Logger();
 
+    void    log     (const QString &str);
     void    log     (const QString *str);
 
     static  Logger* instance();
+    static  void    i_log   (const QString &str);
     static  void    i_log   (const QString *str);
 
 signals:
